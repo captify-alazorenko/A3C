@@ -24,7 +24,10 @@ from estimators import ValueEstimator, PolicyEstimator
 from policy_monitor import PolicyMonitor
 from worker import Worker
 
+# ENV_NAME = 'CartPole-v0'
+#
 results_path = os.path.join(current_path, 'resources/results')
+# results_path = os.path.join(current_path, 'resources/results/cart-pole')
 
 tf.flags.DEFINE_string("model_dir", results_path, "Directory to write Tensorboard summaries and videos to.")
 # tf.flags.DEFINE_string("model_dir", "/tmp/a3c", "Directory to write Tensorboard summaries and videos to.")
@@ -129,8 +132,9 @@ with tf.Session() as sess:
     # Start worker threads
     worker_threads = []
     for worker in workers:
-        worker_fn = lambda: worker.run(sess, coord, FLAGS.t_max)
-        t = threading.Thread(target=worker_fn)
+        # worker_fn = lambda: worker.run(sess, coord, FLAGS.t_max)
+        # t = threading.Thread(target=worker_fn)
+        t = threading.Thread(target=worker.run, args=(sess, coord, FLAGS.t_max))
         t.start()
         worker_threads.append(t)
 

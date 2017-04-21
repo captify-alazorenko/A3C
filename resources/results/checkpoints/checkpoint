@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/andriy/Code/PyCharmProjects/A3C/resources/results/checkpoints/model"
+all_model_checkpoint_paths: "/home/andriy/Code/PyCharmProjects/A3C/resources/results/checkpoints/model"
